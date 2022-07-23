@@ -1,0 +1,42 @@
+Laboratório de Arquitetura e Organização de Computadores II
+
+Estudantes:
+	Pedro Vaz
+	Roberto Gontijo
+
+Prática I - Parte 2
+
+---------------------------------------------------------------------------
+\\ Após compilar o projeto, abrir o ModelSim e digitar na linha de comando:
+
+vsim -L E:/Programas/Quartus/modelsim_ase/altera/verilog/altera_mf work.p1_2
+add wave -position end  sim:/p1_2/SW
+add wave -position end  sim:/p1_2/KEY
+add wave -position end  sim:/p1_2/addr
+add wave -position end  sim:/p1_2/out
+
+force -freeze sim:/p1_2/KEY 1 0, 0 {50 ps} -r 100
+run
+run
+run
+force -freeze sim:/p1_2/SW 000000000000000000   // Lê posição 0
+run
+run
+run
+force -freeze sim:/p1_2/SW 000000100000000000   // Lê posição 1 - SW 11
+run
+run
+run
+force -freeze sim:/p1_2/SW 000001000000000000   // Lê posição 2 - SW 12
+run
+run
+run
+force -freeze sim:/p1_2/SW 001111100000000000   // Lê posição 31 - SW 11, 12 ,13, 14, 15
+run
+run
+run
+
+Dados - HEX1 HEX0 
+Vazios- HEX3 HEX2 
+Dado de entrada - HEX5 HEX4 
+Endereço - HEX7 HEX6 

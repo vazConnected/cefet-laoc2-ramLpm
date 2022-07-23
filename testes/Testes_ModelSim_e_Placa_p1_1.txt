@@ -1,0 +1,54 @@
+Laboratório de Arquitetura e Organização de Computadores II
+
+Estudantes:
+	Pedro Vaz
+	Roberto Gontijo
+
+Prática I - Parte 1
+
+---------------------------------------------------------------------------
+\\ Após compilar o projeto, abrir o ModelSim e digitar na linha de comando:
+
+vsim -L E:/Programas/Quartus/modelsim_ase/altera/verilog/altera_mf work.p1_1
+add wave -position end  sim:/p1_1/SW
+add wave -position end  sim:/p1_1/KEY
+add wave -position end  sim:/p1_1/addr
+add wave -position end  sim:/p1_1/out
+
+force -freeze sim:/p1_1/KEY 1 0, 0 {50 ps} -r 100
+run
+run
+run
+force -freeze sim:/p1_1/SW 000000000000000000 // Lê posição 0
+run
+run
+run
+force -freeze sim:/p1_1/SW 000000100000000000 // Lê posição 1 - SW 11
+run
+run
+run
+force -freeze sim:/p1_1/SW 001111100000000000 // Lê posição 31 - SW 11, 12 ,13, 14, 15
+run
+run
+run
+force -freeze sim:/p1_1/SW 100000100000000111 // Escrevendo 7 na posição 1 - SW 0, 1, 2, 11, 17
+run
+run
+run
+force -freeze sim:/p1_1/SW 101111100000000011 // Escrevendo 3 na posição 31 - SW 0, 1, 11, 12 ,13, 14, 15, 17
+run
+run
+run
+force -freeze sim:/p1_1/SW 000000100000000000 // Leitura na posição 1 - SW 11
+run
+run
+run
+force -freeze sim:/p1_1/SW 001111100000000000 // Leitura na posição 31 - SW 11, 12 ,13, 14, 15
+run
+run
+run	
+
+Dados - HEX1 HEX0 
+Vazios- HEX3 HEX2 
+Dado de entrada - HEX5 HEX4 
+Endereço - HEX7 HEX6 
